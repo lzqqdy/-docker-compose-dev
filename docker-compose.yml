@@ -23,8 +23,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /Users/lzqqdy/Documents/WWW/docker/mysql/conf:/etc/mysql/conf.d
-      - /Users/lzqqdy/Documents/WWW/docker/mysql/data:/var/lib/mysql
+      - /home/docker/mysql/conf:/etc/mysql/conf.d
+      - /home/docker/mysql/data:/var/lib/mysql
   redis:
     image: redis:latest
     container_name: redis
@@ -32,7 +32,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - /Users/lzqqdy/Documents/WWW/docker/redis/conf:/usr/local/etc/redis
+      - /home/docker/redis/conf:/usr/local/etc/redis
   elasticsearch:
     image: elasticsearch:7.5.1
     container_name: elasticsearch
