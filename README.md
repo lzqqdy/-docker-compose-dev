@@ -8,7 +8,7 @@ https://docs.docker.com/engine/install/centos/
 Install Docker Compose
 https://docs.docker.com/compose/install/
 
-$ cd $GOPATH/src/go-project
-
+$ git clone https://github.com/lzqqdy/docker-compose-dev.git
+$ cd docker-compose-dev
 $ docker-compose up --build
 ```
