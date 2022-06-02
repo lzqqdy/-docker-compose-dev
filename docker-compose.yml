@@ -14,7 +14,7 @@ services:
     networks:
       - lzqqdy
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.29
     container_name: mysql
     restart: always
     environment:
@@ -25,8 +25,20 @@ services:
     volumes:
       - /home/docker/mysql/conf:/etc/mysql/conf.d
       - /home/docker/mysql/data:/var/lib/mysql
+  mysql8:
+    image: mysql:8.0.29
+    container_name: mysql8
+    restart: always
+    environment:
+      MYSQL_DATABASE: "test"
+      MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+      - "3308:3306"
+    volumes:
+      - /home/docker/mysql8/conf:/etc/mysql/conf.d
+      - /home/docker/mysql8/data:/var/lib/mysql
   redis:
-    image: redis:latest
+    image: redis:6.2.6
     container_name: redis
     restart: always
     ports:
@@ -88,6 +100,19 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181/kafka
       KAFKA_LISTENERS: PLAINTEXT://:9092
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://ip:9092
+    networks:
+      - lzqqdy
+  postgres:
+    image: postgres:latest
+    container_name: pgsql
+    restart: always
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - 5432:5432
+    volumes:
+      - /home/docker/PostgreSQL/data:/var/lib/postgresql/data
     networks:
       - lzqqdy
 volumes:
