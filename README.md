@@ -1,5 +1,5 @@
 # docker-compose-dev
-docker+portainer+mysql+redis+elasticsearch+kibana+mongo+kafka
+docker+portainer+mysql+redis+elasticsearch+kibana+mongo+kafka+postgreSQL
 ### Run
 ```
 Install Docker
