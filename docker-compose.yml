@@ -61,9 +61,7 @@ services:
     image: kibana:7.5.1
     container_name: kibana
     environment:
-      - "I18N_LOCALE=zh-CN"
-      - "ELASTICSEARCH_USERNAME=elastic"    
-      - "ELASTICSEARCH_PASSWORD=123456"
+      - I18N_LOCALE=zh-CN
     ports:
       - "5601:5601"
     links:
