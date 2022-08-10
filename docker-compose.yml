@@ -47,7 +47,7 @@ services:
     volumes:
       - /home/docker/redis/conf:/usr/local/etc/redis
   elasticsearch:
-    image: elasticsearch:7.5.1
+    image: elasticsearch:7.17.5
     container_name: elasticsearch
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -58,7 +58,7 @@ services:
     networks:
       - lzqqdy
   kibana:
-    image: kibana:7.5.1
+    image: kibana:7.17.5
     container_name: kibana
     environment:
       - I18N_LOCALE=zh-CN
