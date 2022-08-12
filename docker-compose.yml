@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   portainer:
-    image: portainer/portainer-ce
+    image: portainer/portainer-ce:latest
     container_name: portainer
     restart: always
     volumes:
@@ -14,7 +14,7 @@ services:
     networks:
       - lzqqdy
   mysql:
-    image: mysql:8.0.29
+    image: mysql:5.7
     container_name: mysql
     restart: always
     environment:
@@ -83,7 +83,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: 123456
   zookeeper:
-    image: wurstmeister/zookeeper
+    image: wurstmeister/zookeeper:latest
     container_name: zookeeper
     restart: always
     ports:
@@ -91,7 +91,7 @@ services:
     networks:
       - lzqqdy
   kafka:
-    image: wurstmeister/kafka
+    image: wurstmeister/kafka:latest
     container_name: kafka
     restart: always
     depends_on:
@@ -103,7 +103,7 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181/kafka
       KAFKA_LISTENERS: PLAINTEXT://:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://ip:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://{$ip}:9092 //TODO 修改为服务器ip
     networks:
       - lzqqdy
   postgres:
@@ -114,7 +114,7 @@ services:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: 123456
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
       - /home/docker/PostgreSQL/data:/var/lib/postgresql/data
     networks:
