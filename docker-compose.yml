@@ -55,6 +55,9 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
+    volumes:
+      - /home/docker/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+      - /home/docker/elasticsearch/data:/usr/share/elasticsearch/data 
     networks:
       - lzqqdy
   kibana:
