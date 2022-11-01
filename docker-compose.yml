@@ -72,7 +72,22 @@ services:
     depends_on:
       - elasticsearch
     networks:
+      - lzqqdy  
+  logstash:
+    image: logstash:7.17.5
+    container_name: logstash
+    restart: always
+    volumes:
+      - /home/docker/logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:rw
+      - /home/docker/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    networks:
       - lzqqdy
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch:elasticsearch
+    ports:
+      - 4560:4560
   mongo:
     image: mongo:latest
     container_name: mongo
