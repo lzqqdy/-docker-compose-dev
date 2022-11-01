@@ -1,5 +1,5 @@
 # docker-compose-dev
-docker+portainer+mysql8+redis+elasticsearch+kibana+mongo+kafka+postgreSQL
+docker+portainer+mysql8+redis+elasticsearch+kibana+logstash+mongo+kafka+postgreSQL
 
 ### Install Docker
 https://docs.docker.com/engine/install/centos/
