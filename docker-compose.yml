@@ -76,18 +76,19 @@ services:
   logstash:
     image: logstash:7.17.5
     container_name: logstash
-    restart: always
+    ports:
+      - "4560:4560"
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
-      - /home/docker/logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:rw
-      - /home/docker/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
-    networks:
-      - lzqqdy
+      - /home/docker/elk/logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
       - elasticsearch
     links:
       - elasticsearch:elasticsearch
-    ports:
-      - 4560:4560
+    networks:
+      - lzqqdy
   mongo:
     image: mongo:latest
     container_name: mongo
